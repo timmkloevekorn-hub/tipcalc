@@ -38,31 +38,55 @@ st.title('Tip Calc')
 # Eingaben
 # ---------------------------
 
+# Session State für Reset-Funktion initialisieren
+if 'reset_counter' not in st.session_state:
+    st.session_state.reset_counter = 0
+
+# Hilfsfunktion: Formatiert Ziffern mit Komma (z.B. "1234" -> "12,34")
+def format_betrag(ziffern):
+    if len(ziffern) == 0:
+        return ''
+    elif len(ziffern) == 1:
+        return f'0,0{ziffern}'
+    elif len(ziffern) == 2:
+        return f'0,{ziffern}'
+    else:
+        euros = ziffern[:-2]
+        cents = ziffern[-2:]
+        return f'{euros},{cents}'
+
+# Callback Funktion für das Eingabefeld
+def on_betrag_change():
+    raw = st.session_state[f'betrag_{st.session_state.reset_counter}']
+    digits = ''.join(ch for ch in raw if ch.isdigit())
+    formatted = format_betrag(digits)
+    if formatted and formatted != raw:
+        st.session_state[f'betrag_{st.session_state.reset_counter}'] = formatted
+
 betrag_raw = st.text_input(
     'Rechnungsbetrag',
-    placeholder='1234'
+    key=f'betrag_{st.session_state.reset_counter}',
+    on_change=on_betrag_change,
+    placeholder='hier Betrag eingeben',
+    label_visibility='collapsed'
 )
+
+# Nur Ziffern extrahieren
+betrag_clean = ''.join(ch for ch in betrag_raw.strip() if ch.isdigit())
 
 trinkgeld_prozent = st.slider(
     'Trinkgeld in Prozent',
     0,
     30,
-    10
+    10,
+    key=f'slider_{st.session_state.reset_counter}'
 )
 
 # ---------------------------
 # Berechnung
 # ---------------------------
 
-betrag_clean = ''.join(ch for ch in betrag_raw.strip() if ch.isdigit())
-
-if betrag_raw.strip() == '':
-    st.info('Bitte Betrag eingeben.')
-
-elif betrag_clean == '':
-    st.error('Nur Zahlen eingeben.')
-
-else:
+if betrag_clean:
     betrag = int(betrag_clean) / 100
     gesamt = betrag * (1 + trinkgeld_prozent / 100)
     gerundet = math.ceil(gesamt)
@@ -74,3 +98,42 @@ else:
 
     st.write(f'Rechnung: {betrag:.2f} €')
     st.write(f'Inkl. Trinkgeld ({trinkgeld_prozent}%): {gesamt:.2f} €')
+
+# ---------------------------
+# Clear Button
+# ---------------------------
+
+st.divider()
+
+# CSS für grünen, zentrierten Button
+st.markdown("""
+    <style>
+    div[data-testid="stButton"] {
+        display: flex;
+        justify-content: center;
+    }
+    div[data-testid="stButton"] > button {
+        width: 50% !important;
+        background-color: #28a745 !important;
+        color: white !important;
+        font-size: 18px !important;
+        font-weight: bold !important;
+        padding: 15px !important;
+        border: none !important;
+        border-radius: 8px !important;
+        margin-top: 10px !important;
+    }
+    div[data-testid="stButton"] > button:hover {
+        background-color: #218838 !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+col1, col2, col3 = st.columns([1, 2, 1])
+with col2:
+    if st.button('Reset', use_container_width=True):
+        # Reset durch Erhöhen des Counters - generiert neue Widget-Keys
+        st.session_state.reset_counter += 1
+        st.rerun()
+
+
