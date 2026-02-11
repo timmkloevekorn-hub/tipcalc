@@ -126,7 +126,7 @@ st.markdown("""
         padding: 15px !important;
         border: none !important;
         border-radius: 8px !important;
-        margin-top: 10px !important;
+        margin-top: 0px !important;
     }
     div[data-testid="stButton"] > button:hover {
         background-color: #218838 !important;
