@@ -31,8 +31,8 @@ st.markdown("""
     }
     /* Reduzierte Abstände um Divider */
     hr {
-        margin-top: 0.5rem !important;
-        margin-bottom: 0.5rem !important;
+        margin-top: 0.2rem !important;
+        margin-bottom: 0.2rem !important;
     }
     </style>
     """, unsafe_allow_html=True)
