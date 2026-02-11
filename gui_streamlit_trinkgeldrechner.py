@@ -98,8 +98,8 @@ if betrag_clean:
 
     st.divider()
 
-    st.markdown('<p style="text-align: center; margin-top: 10px; margin-bottom: 5px; font-size: 18px;">Sage ganz lässig:</p>', unsafe_allow_html=True)
-    st.markdown(f'<h1 style="text-align: center; font-size: 72px; margin-top: 0; margin-bottom: 10px; font-weight: bold;">{gerundet} €</h1>', unsafe_allow_html=True)
+    st.markdown('<p style="text-align: center; margin-top: 10px; margin-bottom: 2px; font-size: 18px;">Sage ganz lässig:</p>', unsafe_allow_html=True)
+    st.markdown(f'<h1 style="text-align: center; font-size: 72px; margin-top: 0; margin-bottom: 7px; font-weight: bold;">{gerundet} €</h1>', unsafe_allow_html=True)
 
     st.write(f'Rechnung: {betrag:.2f} €')
     st.write(f'Inkl. Trinkgeld ({trinkgeld_prozent}%): {gesamt:.2f} €')
