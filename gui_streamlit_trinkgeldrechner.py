@@ -107,7 +107,8 @@ if betrag_clean:
 # Clear Button
 # ---------------------------
 
-st.divider()
+
+
 
 # CSS für grünen, zentrierten Button
 st.markdown("""
