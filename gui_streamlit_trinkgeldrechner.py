@@ -95,7 +95,7 @@ if betrag_clean:
     gesamt = betrag * (1 + trinkgeld_prozent / 100)
     gerundet = math.ceil(gesamt)
 
-    st.divider()
+   
 
     st.markdown('<p style="text-align: center; margin-top: 10px; margin-bottom: 0px; font-size: 18px;">Sage ganz lässig:</p>', unsafe_allow_html=True)
     st.markdown(f'<h1 style="text-align: center; font-size: 72px; margin-top: 0; margin-bottom: 7px; font-weight: bold;">{gerundet} €</h1>', unsafe_allow_html=True)
