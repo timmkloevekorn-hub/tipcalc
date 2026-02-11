@@ -72,8 +72,7 @@ betrag_raw = st.text_input(
     'Rechnungsbetrag',
     key=f'betrag_{st.session_state.reset_counter}',
     on_change=on_betrag_change,
-    placeholder='hier Betrag eingeben',
-    label_visibility='collapsed'
+    placeholder='hier Betrag eingeben'
 )
 
 # Nur Ziffern extrahieren
