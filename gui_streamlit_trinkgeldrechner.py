@@ -97,7 +97,7 @@ if betrag_clean:
 
     st.divider()
 
-    st.markdown('<p style="text-align: center; margin-top: 10px; margin-bottom: 2px; font-size: 18px;">Sage ganz lässig:</p>', unsafe_allow_html=True)
+    st.markdown('<p style="text-align: center; margin-top: 10px; margin-bottom: 0px; font-size: 18px;">Sage ganz lässig:</p>', unsafe_allow_html=True)
     st.markdown(f'<h1 style="text-align: center; font-size: 72px; margin-top: 0; margin-bottom: 7px; font-weight: bold;">{gerundet} €</h1>', unsafe_allow_html=True)
 
     st.write(f'Rechnung: {betrag:.2f} €')
@@ -115,6 +115,7 @@ st.markdown("""
     div[data-testid="stButton"] {
         display: flex;
         justify-content: center;
+        margin-top: 0 !important;
     }
     div[data-testid="stButton"] > button {
         width: 50% !important;
