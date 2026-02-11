@@ -29,6 +29,11 @@ st.markdown("""
         padding-top: 2rem;
         padding-bottom: 1rem;
     }
+    /* Reduzierte Abstände um Divider */
+    hr {
+        margin-top: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
     </style>
     """, unsafe_allow_html=True)
 
@@ -93,8 +98,8 @@ if betrag_clean:
 
     st.divider()
 
-    st.markdown('<p style="text-align: center; margin-top: 20px; margin-bottom: 5px; font-size: 18px;">Sage ganz lässig:</p>', unsafe_allow_html=True)
-    st.markdown(f'<h1 style="text-align: center; font-size: 72px; margin-top: 0; margin-bottom: 20px; font-weight: bold;">{gerundet} €</h1>', unsafe_allow_html=True)
+    st.markdown('<p style="text-align: center; margin-top: 10px; margin-bottom: 5px; font-size: 18px;">Sage ganz lässig:</p>', unsafe_allow_html=True)
+    st.markdown(f'<h1 style="text-align: center; font-size: 72px; margin-top: 0; margin-bottom: 10px; font-weight: bold;">{gerundet} €</h1>', unsafe_allow_html=True)
 
     st.write(f'Rechnung: {betrag:.2f} €')
     st.write(f'Inkl. Trinkgeld ({trinkgeld_prozent}%): {gesamt:.2f} €')
@@ -135,5 +140,3 @@ with col2:
         # Reset durch Erhöhen des Counters - generiert neue Widget-Keys
         st.session_state.reset_counter += 1
         st.rerun()
-
-
