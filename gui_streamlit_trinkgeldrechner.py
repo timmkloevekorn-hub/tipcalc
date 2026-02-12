@@ -6,36 +6,115 @@ st.set_page_config(
     layout='centered'
 )
 
-# CSS für größere Eingabefelder und zentrierte Ausgabe
 st.markdown("""
-    <style>
-    /* Eingabefeld höher machen */
-    input[type="text"] {
-        font-size: 28px !important;
-        height: 100px !important;
-        padding: 0 20px !important;
-        line-height: 100px !important;
-        border: 2px solid #ccc !important;
-        border-radius: 8px !important;
-        text-align: center !important;
-        box-sizing: border-box !important;
-    }
-    /* Container um das Eingabefeld */
-    div[data-baseweb="input"] {
-        height: 100px !important;
-    }
-    /* Kompaktere Abstände für mobile Ansicht */
-    .block-container {
-        padding-top: 2rem;
-        padding-bottom: 1rem;
-    }
-    /* Reduzierte Abstände um Divider */
-    hr {
-        margin-top: 0.2rem !important;
-        margin-bottom: 0.2rem !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
+<style>
+
+/* ========================================
+   APP-HINTERGRUND: #F2F2F7
+   ======================================== */
+body {
+    background-color: #F2F2F7;
+}
+
+.block-container {
+    padding-top: 1.8rem;
+    padding-bottom: 1rem;
+    background-color: #F2F2F7;
+}
+
+/* ========================================
+   CARD-HINTERGRUND: #FFFFFF
+   ======================================== */
+div[data-baseweb="input"] {
+    min-height: 120px !important;
+}
+
+/* Inneres Input-Feld */
+div[data-baseweb="input"] input {
+    background-color: #FFFFFF !important;
+    font-size: 30px !important;
+    padding: 35px 20px !important;
+    text-align: center !important;
+    border-radius: 12px !important;
+    border: 1.5px solid #D1D1D6 !important;
+    color: #1C1C1E !important;
+}
+
+/* ========================================
+   SLIDER - Styling wird über .streamlit/config.toml
+   gesteuert (primaryColor = #007AFF)
+   ======================================== */
+
+/* Thumb-Design */
+div[data-baseweb="slider"] div[role="slider"] {
+    border: 3px solid #FFFFFF !important;
+    box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3) !important;
+}
+
+/* ========================================
+   RESET-BUTTON
+   HINTERGRUND: #E5E5EA
+   HOVER: #D1D1D6
+   TEXT: #1C1C1E
+   ======================================== */
+div[data-testid="stButton"] {
+    display: flex !important;
+    justify-content: center !important;
+    margin-top: 0 !important;
+}
+
+div[data-testid="stButton"] > button {
+    width: 50% !important;
+    background-color: #E5E5EA !important;
+    color: #1C1C1E !important;
+    font-weight: 500 !important;
+    border-radius: 10px !important;
+    border: none !important;
+    padding: 14px !important;
+    transition: background-color 0.2s ease !important;
+}
+
+div[data-testid="stButton"] > button:hover {
+    background-color: #D1D1D6 !important;
+}
+
+/* ========================================
+   PRIMÄRER TEXT: #1C1C1E
+   ======================================== */
+h1, h2, h3 {
+    color: #1C1C1E !important;
+}
+
+/* ========================================
+   SEKUNDÄRER TEXT: #6E6E73
+   ======================================== */
+label {
+    color: #6E6E73 !important;
+    font-size: 14px !important;
+}
+
+p {
+    color: #1C1C1E !important;
+}
+
+/* Kleinere Texte und Beschreibungen */
+.stMarkdown p small {
+    color: #6E6E73 !important;
+}
+
+/* ========================================
+   SONSTIGES
+   ======================================== */
+hr {
+    margin-top: 0.3rem !important;
+    margin-bottom: 0.3rem !important;
+    border-color: #D1D1D6 !important;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
+
 
 st.title('Tip Calc')
 
@@ -106,34 +185,6 @@ if betrag_clean:
 # ---------------------------
 # Clear Button
 # ---------------------------
-
-
-
-
-# CSS für grünen, zentrierten Button
-st.markdown("""
-    <style>
-    div[data-testid="stButton"] {
-        display: flex;
-        justify-content: center;
-        margin-top: 0 !important;
-    }
-    div[data-testid="stButton"] > button {
-        width: 50% !important;
-        background-color: #28a745 !important;
-        color: white !important;
-        font-size: 18px !important;
-        font-weight: bold !important;
-        padding: 15px !important;
-        border: none !important;
-        border-radius: 8px !important;
-        margin-top: 0px !important;
-    }
-    div[data-testid="stButton"] > button:hover {
-        background-color: #218838 !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
 
 col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
